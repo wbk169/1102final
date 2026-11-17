@@ -65,11 +65,25 @@
     });
     badge();
   }
+  function notify(message){
+    let region=document.getElementById("pf-shop-status");
+    if(!region){
+      region=document.createElement("div");
+      region.id="pf-shop-status";
+      region.setAttribute("role","status");
+      region.setAttribute("aria-live","polite");
+      document.body.appendChild(region);
+    }
+    region.textContent=message;
+    region.classList.add("is-visible");
+    window.clearTimeout(notify.timer);
+    notify.timer=window.setTimeout(()=>region.classList.remove("is-visible"),2400);
+  }
   function productButtons(){
     const id=getId(),product=find(id);
     if(!product)return;
     document.getElementById("bagBtn")?.addEventListener("click",()=>{
-      if(add(id))alert("已加入購物車："+product.name);
+      if(add(id))notify("已加入購物車："+product.name);
     });
     const bag=document.getElementById("bagBtn");
     if(bag&&!document.getElementById("favoriteProductButton")){
@@ -78,7 +92,7 @@
       button.type="button";
       button.className="btn btn-outline-dark mt-2";
       button.dataset.shopFavoriteProduct=String(id);
-      button.addEventListener("click",()=>toggleFavorite(id));
+      button.addEventListener("click",()=>{toggleFavorite(id);notify(favorites().includes(id)?"已加入收藏："+product.name:"已移除收藏："+product.name);});
       bag.insertAdjacentElement("afterend",button);
     }
     updateFavoriteButtons();
@@ -146,11 +160,13 @@
     if(checkout)checkout.disabled=!valid;
     badge();
   }
-  document.addEventListener("DOMContentLoaded",()=>{
+  function initialize(){
     setupNav();productButtons();render();renderCart();
     document.getElementById("shop-cart-checkout")?.addEventListener("click",()=>{
       if(Object.values(cart()).some(n=>Number(n)>0)) alert("結帳功能尚未開放。");
     });
-  });
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initialize,{once:true});
+  else initialize();
   window.PFDiorShop={catalog,cart,favorites,add,setQty,renderCart};
 })();
