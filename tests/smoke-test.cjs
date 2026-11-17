@@ -49,8 +49,8 @@ for(const file of ["backstage_product.html","backstage_member.html"]){
  assert.match(html,/onclick="changeBtn\(this\)"/);
  assert.match(html,/onclick="deleteBtn\(this\)"/);
 }
-assert.match(read("user.html"),/尚未連接會員系統/);
-assert.match(read("cart.html"),/不會產生真實訂單或付款/);
+assert.match(read("user.html"),/登入及註冊功能尚未開放/);
+assert.match(read("cart.html"),/id="shop-cart-checkout"/);
 for(const file of ["index.html","cart.html","user.html"]){
   assert.match(read(file),/css\/responsive-polish.css/);
 }
