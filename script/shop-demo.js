@@ -69,7 +69,7 @@
     const id=getId(),product=find(id);
     if(!product)return;
     document.getElementById("bagBtn")?.addEventListener("click",()=>{
-      if(add(id))alert("已加入購物車："+product.name");
+      if(add(id))alert("已加入購物車："+product.name);
     });
     const bag=document.getElementById("bagBtn");
     if(bag&&!document.getElementById("favoriteProductButton")){
