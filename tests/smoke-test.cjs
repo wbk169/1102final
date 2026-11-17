@@ -89,3 +89,22 @@ for(const file of ["search.html","favorites.html","cart.html","product1.html","p
  assert.match(read(file),/script\/shop-demo\.js/);
 }
 console.log("PASS Catalog, local-cart persistence and page integrations");
+
+/* Global navigation, profile sanitization, and public file hygiene */
+for(const file of ["script/site-nav.js","script/member.js"]){
+  new vm.Script(read(file), {filename:file});
+}
+const htmlPages=fs.readdirSync(root).filter(file=>file.endsWith(".html"));
+assert.equal(htmlPages.length,26,"Expected 26 storefront pages");
+for(const file of htmlPages){
+  const html=read(file);
+  assert.match(html,/script\/site-nav\.js/,file+" should include the shared navigation");
+  assert.match(html,/css\/site-nav\.css/,file+" should include shared navigation styles");
+}
+assert.match(read("script/site-nav.js"),/favorites\.html/);
+assert.match(read("script/site-nav.js"),/cart\.html/);
+assert.match(read("script/site-nav.js"),/search\.html/);
+assert.doesNotMatch(read("backstage_member.html"),/123123123123123|20200222@gmail\.com|金泰亨/);
+assert.doesNotMatch(read("member.html"),/xiaoming@gmail\.com|0912345678/);
+assert.equal(fs.readdirSync(path.join(root,"picture")).some(file=>file.endsWith(".doc")),false);
+console.log("PASS Shared navigation on "+htmlPages.length+" pages, member placeholders and file hygiene");
