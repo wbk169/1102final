@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8">
@@ -29,7 +29,7 @@
         <div class="form-inner">
             <form action="#" class="login">
                 <div class="field">
-                    <input type="text" placeholder="信箱" required>
+                    <input type="email" placeholder="信箱" required>
                 </div>
                 <div class="field">
                     <input type="password" placeholder="密碼" required>
@@ -42,7 +42,7 @@
             </form>
             <form action="#" class="signup">
                 <div class="field">
-                    <input type="text" placeholder="信箱" required>
+                    <input type="email" placeholder="信箱" required>
                 </div>
                 <div class="field">
                     <input type="password" placeholder="設定密碼" required>
@@ -85,6 +85,12 @@
         return false;
     });
    
+    [loginForm, signupForm].forEach(form => {
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        alert("課堂專題展示版：尚未連接會員資料庫，無法真正登入或註冊。");
+      });
+    });
 </script>
 </body>
 
