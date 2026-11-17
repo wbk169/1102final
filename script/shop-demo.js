@@ -69,7 +69,7 @@
     const id=getId(),product=find(id);
     if(!product)return;
     document.getElementById("bagBtn")?.addEventListener("click",()=>{
-      if(add(id))alert("已加入購物車："+product.name+"（展示版，不會建立真實訂單）");
+      if(add(id))alert("已加入購物車："+product.name");
     });
     const bag=document.getElementById("bagBtn");
     if(bag&&!document.getElementById("favoriteProductButton")){
@@ -105,7 +105,7 @@
     let selected=[],message="";
     const type=document.body.dataset.shopPage;
     if(type==="favorites"){
-      selected=favorites().map(find).filter(Boolean);message="我的收藏（僅保存在本機瀏覽器）";
+      selected=favorites().map(find).filter(Boolean);message="我的收藏";
     }else{
       const q=(new URLSearchParams(location.search).get("q")||"").trim();
       const normalized=q.toLocaleLowerCase();
@@ -149,7 +149,7 @@
   document.addEventListener("DOMContentLoaded",()=>{
     setupNav();productButtons();render();renderCart();
     document.getElementById("shop-cart-checkout")?.addEventListener("click",()=>{
-      if(Object.values(cart()).some(n=>Number(n)>0)) alert("這是課堂專題展示版，尚未連接訂單系統或金流，不會建立真實訂單。");
+      if(Object.values(cart()).some(n=>Number(n)>0)) alert("結帳功能尚未開放。");
     });
   });
   window.PFDiorShop={catalog,cart,favorites,add,setQty,renderCart};
