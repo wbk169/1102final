@@ -1,0 +1,48 @@
+/* Responsive polish for the original class project. Loaded after Bootstrap. */
+html { scroll-behavior: smooth; }
+body { margin: 0; overflow-x: clip; }
+img { max-width: 100%; height: auto; }
+header nav img { max-width: min(190px, 42vw); height: auto; }
+.navbar { padding-inline: clamp(12px, 2vw, 28px); }
+.credit-card { max-width: 100%; width: auto; }
+footer { padding: clamp(24px, 5vw, 70px) 0; }
+footer .row > div { margin-bottom: 18px; }
+#back-to-top-btn { z-index: 1200; }
+button, a { touch-action: manipulation; }
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid #234c80;
+  outline-offset: 3px;
+}
+.intopho1 { padding: clamp(12px, 4vw, 64px); }
+.intopho1 img, .intopho2 img { width: 100%; max-width: 100%; min-width: 0; height: auto; object-fit: cover; }
+.intofo1, .intofo2, .intofo3 { padding: 0 clamp(12px, 2vw, 24px); }
+.carousel { height: clamp(240px, 55vh, 720px); }
+@media (max-width: 767px) {
+  .carousel { height: 42vh; min-height: 220px; }
+  .carousel-button { font-size: 2.5rem; }
+  #bestseller_TitleBox p { font-size: clamp(26px, 8vw, 48px); }
+  .bestseller_List { min-width: 0; max-width: 100%; }
+  footer, footer .text-right, footer .text-left { text-align: center !important; }
+  #means { flex-wrap: wrap; gap: 8px; margin-block: 12px; }
+  #means button { position: static !important; flex: 0 0 48px; }
+  #means .form-control { padding-left: 12px !important; flex: 1 1 140px; }
+}
+/* Cart: remove the desktop-only absolute positioning of quantity and remove. */
+.cardleft { margin-left: 0 !important; padding: 0 clamp(12px, 2vw, 28px); }
+.cardleft > div { border-bottom: 1px solid #e5e7eb; padding: 18px 0; }
+.img-style { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-right: 0; }
+.img-style img { width: min(200px, 35vw); max-width: 100%; min-width: 0 !important; max-height: 240px; object-fit: contain; margin-bottom: 0; }
+.font-style { margin: 0; padding-left: 0; flex: 1 1 160px; }
+.input-style { position: static !important; margin: 0 !important; width: 66px; height: 42px; padding: 5px; }
+.cart-remove { position: static !important; margin: 0 !important; font-size: 16px; border-radius: 8px; padding: 9px 14px; min-height: 42px; }
+#shopCartRight { width: 100% !important; max-width: 420px; padding: 16px; margin: 0 auto; }
+#shopCartRightTitleBox { font-size: clamp(23px, 3vw, 34px); }
+#totalBox { width: 100%; padding-bottom: 16px; }
+#checkoutBox { padding: 12px; }
+#checkoutBox button { min-height: 48px; }
+#checkoutBox button:disabled { opacity: .5; cursor: not-allowed; }
+@media (max-width: 767px) {
+  .img-style img { width: min(145px, 40vw); }
+  .font-style { flex-basis: 46%; }
+  .cardleft { padding-inline: 14px; }
+}
