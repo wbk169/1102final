@@ -23,3 +23,10 @@ body > header.pf-site-header {position:sticky !important;top:0;left:0;right:0;z-
   .pf-site-header .pf-nav-search{order:5;flex:1 1 100%;max-width:none}
 }
 @media(max-width:440px){.pf-site-header .pf-logo{font-size:20px}.pf-site-header .pf-nav-icons a{font-size:13px}.pf-site-header .pf-nav-wrap{gap:10px}}
+
+/* Preserve the centered login panel while sharing the site navigation. */
+body:has(.wrapper):has(.pf-site-header) {display:flex !important;flex-direction:column;min-height:100vh;height:auto !important;place-items:initial !important;align-items:stretch}
+body:has(.wrapper) .wrapper{width:min(440px,calc(100% - 28px));margin:clamp(30px,6vh,75px) auto !important}
+body:has(.wrapper) .pf-site-header{flex:0 0 auto}
+body:has(.wrapper) .form-inner{min-width:0}
+.pf-site-header ~ .pf-footer{margin-top:auto}
