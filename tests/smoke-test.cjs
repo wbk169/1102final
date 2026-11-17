@@ -63,23 +63,31 @@ const storage={
  getItem:key=>store.get(key)||null,
  setItem:(key,value)=>store.set(key,value)
 };
-let readyCallback;
+let readyCallback,categoryClick;
+const shopStatus={id:"pf-shop-status",classList:{add(){},remove(){}},setAttribute(){},textContent:""};
 const demoDocument={
+ body:{appendChild(){}},
+ createElement(){return shopStatus;},
  readyState:"loading",
- addEventListener(name,callback){if(name==="DOMContentLoaded")readyCallback=callback;},
+ addEventListener(name,callback){if(name==="DOMContentLoaded")readyCallback=callback;if(name==="click")categoryClick=callback;},
  querySelectorAll(){return [];},
  getElementById(){return null;}
 };
 const demoContext={
  document:demoDocument,
  localStorage:storage,
+ setTimeout:()=>1,
+ window:{setTimeout:()=>1,clearTimeout(){}},
  location:{pathname:"/1102final/product1.html",search:"",href:""},
  URLSearchParams,console,alert(){}
 };
 demoContext.window=demoContext;
+demoContext.setTimeout=()=>1;
+demoContext.clearTimeout=()=>{};
 vm.runInNewContext(read("script/shop-demo.js"),demoContext);
 assert.equal(typeof readyCallback,"function");
 readyCallback();
+assert.equal(typeof categoryClick,"function");
 assert.equal(demoContext.PFDiorShop.catalog.length,12);
 assert.equal(demoContext.PFDiorShop.add(1),true);
 assert.equal(JSON.parse(store.get("pf-dior-demo-cart-v1"))["1"],1);
@@ -110,3 +118,19 @@ assert.doesNotMatch(read("backstage_member.html"),/123123123123123|20200222@gmai
 assert.doesNotMatch(read("member.html"),/xiaoming@gmail\.com|0912345678/);
 assert.equal(fs.readdirSync(path.join(root,"picture")).some(file=>file.endsWith(".doc")),false);
 console.log("PASS Shared navigation on "+htmlPages.length+" pages, member placeholders and file hygiene");
+
+const link={getAttribute(){return "product7.html";}};
+const card={querySelector(){return link;}};
+const makeButton=(favorite)=>({
+ closest(selector){return selector===".card"?card:null;},
+ querySelector(selector){return favorite?selector===".fa-heart"?{}:null:selector===".fa-cart-plus"?{}:null;},
+ setAttribute(){},textContent:""
+});
+function fireCategory(button){
+ categoryClick({target:{closest(selector){return selector===".gallery .card .overlay button"?button:null;}},preventDefault(){}});
+}
+fireCategory(makeButton(false));
+assert.equal(JSON.parse(store.get("pf-dior-demo-cart-v1"))["7"],1);
+fireCategory(makeButton(true));
+assert.equal(JSON.parse(store.get("pf-dior-demo-favorites-v1")).includes(7),true);
+console.log("PASS Category product cards add to cart and favorites");
