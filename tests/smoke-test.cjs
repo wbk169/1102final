@@ -75,6 +75,7 @@ const demoContext={
  location:{pathname:"/1102final/product1.html",search:"",href:""},
  URLSearchParams,console,alert(){}
 };
+demoContext.window=demoContext;
 vm.runInNewContext(read("script/shop-demo.js"),demoContext);
 assert.equal(typeof readyCallback,"function");
 readyCallback();
