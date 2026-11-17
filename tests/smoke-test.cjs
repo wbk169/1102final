@@ -55,3 +55,37 @@ for(const file of ["index.html","cart.html","user.html"]){
   assert.match(read(file),/css\/responsive-polish.css/);
 }
 console.log("PASS Admin controls, disclosure and responsive styles");
+
+// Demo catalog smoke checks: syntax, product records, local storage behavior.
+new vm.Script(read("script/shop-demo.js"), {filename:"script/shop-demo.js"});
+const store=new Map();
+const storage={
+ getItem:key=>store.get(key)||null,
+ setItem:(key,value)=>store.set(key,value)
+};
+let readyCallback;
+const demoDocument={
+ addEventListener(name,callback){if(name==="DOMContentLoaded")readyCallback=callback;},
+ querySelectorAll(){return [];},
+ getElementById(){return null;}
+};
+const demoContext={
+ document:demoDocument,
+ localStorage:storage,
+ location:{pathname:"/1102final/product1.html",search:"",href:""},
+ URLSearchParams,console,alert(){}
+};
+vm.runInNewContext(read("script/shop-demo.js"),demoContext);
+assert.equal(typeof readyCallback,"function");
+readyCallback();
+assert.equal(demoContext.PFDiorShop.catalog.length,12);
+assert.equal(demoContext.PFDiorShop.add(1),true);
+assert.equal(JSON.parse(store.get("pf-dior-demo-cart-v1"))["1"],1);
+demoContext.PFDiorShop.setQty(1,3);
+assert.equal(JSON.parse(store.get("pf-dior-demo-cart-v1"))["1"],3);
+demoContext.PFDiorShop.setQty(1,0);
+assert.equal(Object.keys(JSON.parse(store.get("pf-dior-demo-cart-v1"))).length,0);
+for(const file of ["search.html","favorites.html","cart.html","product1.html","product12.html"]){
+ assert.match(read(file),/script\/shop-demo\.js/);
+}
+console.log("PASS Catalog, local-cart persistence and page integrations");
