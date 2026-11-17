@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8">
@@ -41,6 +41,7 @@
     <!--匯入GOOGLE FONT-->
       <link rel="icon" href="./picture/PF.jpg" type="image/x-icon">
     <title>Cart</title>
+    <link rel="stylesheet" href="css/responsive-polish.css">
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap');
@@ -110,7 +111,7 @@
                             <i class="fas fa-search"></i>
                         </button>
                         <a href=#><i class="far fa-heart"></i></a>
-                        <a href=#><i class="fas fa-shopping-cart"></i></a>
+                        <a href="cart.html" aria-label="購物車"><i class="fas fa-shopping-cart"></i></a>
                         <a href=user.html><i class="fa-solid fa-user"></i></a>
                     </form>
                 </div>
@@ -188,7 +189,8 @@
                     <div class="totalprice-style">$0</div>
                 </div>
                 <div id="checkoutBox">
-                    <button type="button" class="buy-btn">結帳</button>
+                    <p role="note" style="font-size:14px;color:#555;">課堂展示版：不會產生真實訂單或付款。</p>
+                    <button type="button" class="buy-btn">模擬結帳</button>
 
                 </div>
             </div>

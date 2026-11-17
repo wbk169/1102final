@@ -1,0 +1,17 @@
+name: Frontend smoke checks
+on:
+  push:
+    branches: [main, fix/critical-frontend-bugs-20261117]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/smoke-test.cjs
