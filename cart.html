@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/cart.css">
-    <script src="./script/cart.js" defer></script>
+    <script src="script/shop-demo.js" defer></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--匯入Boostrap CSS-->
@@ -43,6 +43,7 @@
     <title>Cart</title>
     <link rel="stylesheet" href="css/responsive-polish.css">
 <link rel="stylesheet" href="css/footer-layout.css">
+<link rel="stylesheet" href="css/shop-demo.css">
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap');
@@ -112,7 +113,7 @@
                         <button class="btn btn-outline-success" type="submit" style="position: absolute;">
                             <i class="fas fa-search"></i>
                         </button>
-                        <a href=#><i class="far fa-heart"></i></a>
+                        <a href="favorites.html" aria-label="查看我的收藏"><i class="far fa-heart"></i></a>
                         <a href="cart.html" aria-label="購物車"><i class="fas fa-shopping-cart"></i></a>
                         <a href=user.html><i class="fa-solid fa-user"></i></a>
                     </form>
@@ -124,80 +125,7 @@
     <div class="marquee">
         <span> 「PF. DIOR 6月活動」 滿$66,600享DIOR鑲鑽托特包; 全站$4,000免運，再享海洋度假香氛吊飾！</span>
     </div>
-    <!-----cart items details------>
-
-    <div class="row py-5 g-5">
-
-        <div class="col-12 col-lg-8">
-            <div class="cardleft">
-                <p style="font-size: 32px;">購物車</p>
-                <div>
-                    <div class="img-style">
-                        <img src="picture/product1.jpg">
-                        <div class="font-style">
-                            <span>Sauvage Elixir</span>
-                            <div class="price-style">$3790</div>
-                        </div>
-                        <input type="number" value="1" class="input-style">
-                        <button class="cart-remove" type="button">移除</button>
-                    </div>
-                </div>
-                <div>
-                    <div class="img-style">
-                        <img src="picture/product7-1.jpg">
-                        <div class="font-style">
-                            <span>J'ADORE極蘊香氛
-                            </span>
-                            <div class="price-style">$1000</div>
-
-                        </div>
-                        <input type="number" value="1" class="input-style">
-                        <button class="cart-remove" type="button">移除</button>
-                    </div>
-                </div>
-                <div>
-                    <div class="img-style">
-                        <img src="picture/product10-1.jpg">
-                        <div class="font-style">
-                            <span> MISS DIOR玫瑰珍釀香氛</span>
-                            <div class="price-style">$6800</div>
-                        </div>
-                        <input type="number" value="1" class="input-style">
-                        <button class="cart-remove" type="button">移除</button>
-                    </div>
-                </div>
-                <div>
-                    <div class="img-style">
-                        <img src="picture/product10-1.jpg">
-                        <div class="font-style">
-                            <span> MISS DIOR玫瑰珍釀香氛</span>
-                            <div class="price-style">$6800</div>
-                        </div>
-                        <input type="number" value="1" class="input-style">
-                        <button class="cart-remove" type="button">移除</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class=" col-12 col-lg-4">
-            <div id="shopCartRight">
-                <div id="shopCartRightTitleBox">
-                    <p>訂單摘要</p>
-                </div>
-           
-                <div id="totalBox">
-                    <p style="display: flex;"><span id="shopCartLeftText">總計:</span></p>
-                    <div class="totalprice-style">$0</div>
-                </div>
-                <div id="checkoutBox">
-                    <p role="note" style="font-size:14px;color:#555;">課堂展示版：不會產生真實訂單或付款。</p>
-                    <button type="button" class="buy-btn">模擬結帳</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    <main class="shop-page"><h1>購物車</h1><p class="shop-note">本網站為大學課堂展示作品。購物車僅儲存在本機瀏覽器；不提供真實訂單、付款或配送服務。</p><div id="shop-cart-items"></div><div class="shop-total-line"><span>商品合計</span><span id="shop-cart-total">NT$ 0</span></div><button type="button" id="shop-cart-checkout" disabled title="展示網站無真實結帳功能">模擬結帳</button></main>
     <!-------footer--------->
     <button id="back-to-top-btn"><i class="fa-solid fa-angles-up"></i></button>
     <footer class="pf-footer" aria-label="網站頁尾"><div class="pf-footer-grid"><section class="pf-footer-column"><h5>OURS</h5><nav class="pf-footer-links"><a href="https://www1.cycu.edu.tw/">- SCHOOL -</a><a href="https://www.dior.com/zh_tw">- DIOR -</a></nav></section><section class="pf-footer-column"><h5>FOLLOW DIOR</h5><nav class="pf-footer-links"><a href="https://www.instagram.com/dior/">INSTAGRAM</a><a href="https://www.facebook.com/Dior/">FACEBOOK</a><a href="https://www.twitter.com/dior/">TWITTER</a></nav></section><section class="pf-footer-column"><h5>聯絡我們</h5><p>onlinecare.my@PFdior.com.my</p><p>『週一至週六』</p><p>10:00～12:00／14:00～18:00</p></section></div><div class="pf-footer-bottom">課堂前端展示作品 · 2022 © PF. DIOR</div></footer>
