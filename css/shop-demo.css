@@ -1,0 +1,28 @@
+/* Functional demo storefront pages */
+.shop-page{max-width:1160px;margin:0 auto;padding:36px 18px 76px;color:#162033;font-family:Arial,"Noto Sans TC",sans-serif}
+.shop-page h1{font-size:clamp(26px,3vw,38px);margin:0 0 20px}
+.shop-page .shop-note{background:#f1f4f9;border-left:3px solid #29446b;padding:12px 16px;line-height:1.7}
+.shop-filter{display:flex;gap:10px;margin:20px 0 28px}
+.shop-filter input{padding:12px 15px;border:1px solid #bac1cc;border-radius:8px;flex:1;min-width:0}
+.shop-filter button,.shop-product-card button,.shop-cart-actions button,#shop-cart-checkout{background:#18243a;color:white;border:0;border-radius:7px;padding:10px 17px;cursor:pointer}
+.shop-products{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px;margin-top:20px}
+.shop-product-card{border:1px solid #e2e6ee;border-radius:10px;padding:12px;min-width:0;box-shadow:0 2px 8px #15233d0c}
+.shop-product-card a{text-decoration:none;color:#18243a}
+.shop-product-card img{width:100%;height:215px;object-fit:contain;display:block}
+.shop-product-card h3{font-size:16px;line-height:1.5;min-height:48px;margin:12px 0}
+.shop-product-card p{font-weight:bold}
+.shop-product-card button{width:100%}
+.shop-cart-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;border-bottom:1px solid #dce1e9;padding:18px 0}
+.shop-cart-row a{display:flex;align-items:center;gap:18px;min-width:0;color:#162033;text-decoration:none}
+.shop-cart-row img{width:105px;height:100px;object-fit:contain}
+.shop-cart-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
+.shop-cart-actions input{max-width:76px;min-height:40px;padding:6px}
+.shop-total-line{display:flex;justify-content:space-between;gap:20px;font-size:22px;font-weight:bold;padding:22px 0}
+#shop-cart-checkout:disabled{opacity:.5;cursor:not-allowed}
+.shop-topbar{background:#bdbdbd;padding:18px clamp(16px,4vw,45px);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.shop-topbar a{color:#162033;text-decoration:none}
+.shop-topbar .shop-brand{font-family:Georgia,serif;font-size:28px;margin-right:auto}
+.shop-topbar form{display:flex;gap:8px;flex:1 1 200px;max-width:350px}
+.shop-topbar input{width:100%;min-width:0;padding:9px;border:1px solid #9da8b6;border-radius:5px}
+.shop-topbar button{padding:9px 14px;border:0;border-radius:5px;cursor:pointer}
+@media(max-width:600px){.shop-page{padding:22px 14px 45px}.shop-cart-row a{width:100%}.shop-cart-actions{width:100%;justify-content:space-between}.shop-product-card img{height:170px}}
