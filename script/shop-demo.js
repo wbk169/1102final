@@ -148,6 +148,9 @@
   }
   document.addEventListener("DOMContentLoaded",()=>{
     setupNav();productButtons();render();renderCart();
+    document.getElementById("shop-cart-checkout")?.addEventListener("click",()=>{
+      if(Object.values(cart()).some(n=>Number(n)>0)) alert("這是課堂專題展示版，尚未連接訂單系統或金流，不會建立真實訂單。");
+    });
   });
   window.PFDiorShop={catalog,cart,favorites,add,setQty,renderCart};
 })();
