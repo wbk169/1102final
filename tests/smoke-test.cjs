@@ -65,6 +65,7 @@ const storage={
 };
 let readyCallback;
 const demoDocument={
+ readyState:"loading",
  addEventListener(name,callback){if(name==="DOMContentLoaded")readyCallback=callback;},
  querySelectorAll(){return [];},
  getElementById(){return null;}
