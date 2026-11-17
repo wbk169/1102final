@@ -79,6 +79,29 @@
     window.clearTimeout(notify.timer);
     notify.timer=window.setTimeout(()=>region.classList.remove("is-visible"),2400);
   }
+  function categoryProductButtons(){
+    document.addEventListener("click",event=>{
+      const button=event.target.closest(".gallery .card .overlay button");
+      if(!button)return;
+      const card=button.closest(".card");
+      const productLink=card?.querySelector('a[href*="product"]');
+      const matched=productLink?.getAttribute("href")?.match(/product(\\d+)\\.html/i);
+      const id=matched?Number(matched[1]):null;
+      const product=find(id);
+      if(!product)return;
+      event.preventDefault();
+      if(button.querySelector(".fa-cart-plus") || /add to cart|加入購物車/i.test(button.textContent)){
+        if(add(id))notify("已加入購物車："+product.name);
+      }else if(button.querySelector(".fa-heart")){
+        toggleFavorite(id);
+        const saved=favorites().includes(id);
+        button.setAttribute("aria-pressed",String(saved));
+        button.setAttribute("aria-label",saved?"移除收藏":"收藏商品");
+        button.title=saved?"已收藏":"收藏商品";
+        notify(saved?"已加入收藏："+product.name:"已移除收藏："+product.name);
+      }
+    });
+  }
   function productButtons(){
     const id=getId(),product=find(id);
     if(!product)return;
@@ -161,7 +184,7 @@
     badge();
   }
   function initialize(){
-    setupNav();productButtons();render();renderCart();
+    setupNav();productButtons();categoryProductButtons();render();renderCart();
     document.getElementById("shop-cart-checkout")?.addEventListener("click",()=>{
       if(Object.values(cart()).some(n=>Number(n)>0)) alert("結帳功能尚未開放。");
     });
