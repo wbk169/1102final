@@ -27,7 +27,7 @@ if (cart) {
   cart.querySelectorAll(".input-style").forEach(input => {input.min = "1";input.step = "1";});
 }
 if (checkout) checkout.addEventListener("click", () => {
-  if (rows().length) alert("課堂專題展示版：尚未連接訂單資料庫或金流，不會建立真實訂單。");
+  if (rows().length) alert("結帳功能尚未開放。");
 });
 updateTotal();
 const backButton = document.querySelector("#back-to-top-btn");
