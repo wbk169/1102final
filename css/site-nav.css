@@ -30,3 +30,12 @@ body:has(.wrapper) .wrapper{width:min(440px,calc(100% - 28px));margin:clamp(30px
 body:has(.wrapper) .pf-site-header{flex:0 0 auto}
 body:has(.wrapper) .form-inner{min-width:0}
 .pf-site-header ~ .pf-footer{margin-top:auto}
+
+/* Prevent legacy page selectors from collapsing new navigation controls. */
+body { margin-left:0 !important; margin-right:0 !important; }
+.pf-site-header .pf-nav-wrap{width:100%;max-width:1440px;gap:14px}
+.pf-site-header .pf-nav-links{min-width:0}
+.pf-site-header .pf-nav-search{flex:0 0 235px;min-width:175px;max-width:235px;width:235px;display:flex !important;align-items:center;gap:6px}
+.pf-site-header .pf-nav-search input{display:block;flex:1 1 auto;min-width:0;width:100% !important;max-width:none;position:static !important;float:none !important;margin:0 !important;height:40px !important;padding:8px 10px !important;box-sizing:border-box}
+.pf-site-header .pf-nav-search button{display:inline-flex !important;justify-content:center;align-items:center;flex:0 0 auto !important;min-width:62px !important;width:auto !important;max-width:none !important;position:static !important;float:none !important;margin:0 !important;height:40px !important;padding:0 12px !important;white-space:nowrap !important;line-height:1 !important;font-size:14px !important;text-align:center !important;writing-mode:horizontal-tb !important}
+@media(max-width:980px){.pf-site-header .pf-nav-search{order:5;flex:1 1 100%;max-width:none;width:100%;min-width:0}}
