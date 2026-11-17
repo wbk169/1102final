@@ -85,7 +85,7 @@
       if(!button)return;
       const card=button.closest(".card");
       const productLink=card?.querySelector('a[href*="product"]');
-      const matched=productLink?.getAttribute("href")?.match(/product(\\d+)\\.html/i);
+      const matched=productLink?.getAttribute("href")?.match(/product(\d+)\.html/i);
       const id=matched?Number(matched[1]):null;
       const product=find(id);
       if(!product)return;
